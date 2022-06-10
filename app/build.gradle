@@ -21,22 +21,14 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-//    flavorDimensions "pagination"
-//
-//    productFlavors {
-//        VanillaFlavour {
-//            applicationId "com.ably.vanillapagination"
-//            dimension "pagination"
-//            versionCode 1
-//            versionName "1.0"
-//        }
-//        ChoclateFlavour {
-//            applicationId "com.ably.chcolatepagination"
-//            dimension "pagination"
-//            versionCode 1
-//            versionName "1.0"
-//        }
-//    }
+    signingConfigs {
+        release {
+            storeFile file("../demopagination.jks")
+            storePassword "ably@123"
+            keyAlias "demoPaging"
+            keyPassword "ably@123"
+        }
+    }
     buildTypes {
 
         debug {
@@ -45,6 +37,7 @@ android {
         }
         release {
             minifyEnabled false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
